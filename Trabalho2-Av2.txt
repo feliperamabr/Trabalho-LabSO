@@ -1,0 +1,102 @@
+﻿
+                              #Trabalho 2 - Av2 - Aluno: FELIPE RAMALHO
+
+
+
+  1-Faça um script Shell que receba um nome de arquivo como parâmetro e responda se este arquivo existe ou não.
+
+   #!/bin/bash
+      
+      arq=$1
+      
+      if [ -f $arq ]
+      then 
+         echo -e " $arq existe! "
+      else
+         echo -e " $arq não existe! "
+      fi
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+  2-Script que calcula o fatorial de um número usando a estrutura for.
+
+   #!/bin/bash
+
+      echo "Entre com o numero que deseja saber o fatorial:  "
+      read num
+
+      fat=1
+
+      for ((i=1;i<=$num;i++));
+      do
+         fat=$(($fat*$i))
+      done
+
+      echo " $fat eh o fatorial de $num "
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+  3-Usando estrutura de repetição, faça um script para exibir todos os arquivos
+  da pasta atual com tamanho = 0kb (vazio).
+
+   #!/bin/bash
+
+      for i in $(ls . | find -size 0k)
+      do
+         echo "$i"
+      done
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+  4-Usando estrutura de repetição, faça um script para ler a PASTA ATUAL, calcular e exibir:
+  - O total de arquivos lidos
+  - O total de arquivos com a extensão .txt
+  - O total de arquivos com a extensão .c
+  - O total de arquivos com a extensão .py
+
+   #!/bin/bash
+      c=0
+      py=0
+      cont=0
+      txt=0
+      for file in $(ls .)
+      do 
+         case "$file" in
+            *.txt)
+               txt=$(( $txt + 1 ))
+               ;;
+            *.c)
+               c=$(( $c + 1 ))
+               ;;
+            *.py)
+               py=$(( $py + 1 ))
+               ;;
+            *.*)
+               cont=$(( $cont + 1 ))
+               ;;  
+         esac
+      done
+      cont=$(( $txt + $c + $py + $cont ))
+      echo "Total de arquivos com a extensão .txt: $txt"
+      echo "Total de arquivos com a extensão .c: $c"
+      echo "Total de arquivos com a extensão .py: $py"
+      echo "Total de arquivos: $cont"
+
+
+
+
+
+
+
+
+
+
+
+
+
